@@ -1,0 +1,51 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the full dataset into a DataFrame
+df_full = pd.read_csv('dataset_full.csv')
+
+# Load the small dataset into a DataFrame
+df_small = pd.read_csv('dataset_small.csv')
+
+# View the first few rows of each dataset
+print("First few rows of full dataset:")
+print(df_full.head())
+
+print("\nFirst few rows of small dataset:")
+print(df_small.head())
+
+# Explore the structure of each dataset
+print("\nInformation about full dataset:")
+print(df_full.info())
+
+print("\nInformation about small dataset:")
+print(df_small.info())
+
+# Summary statistics
+print("Summary statistics of full dataset:")
+print(df_full.describe())
+
+print("\nSummary statistics of small dataset:")
+print(df_small.describe())
+
+# Missing values
+print("\nMissing values in full dataset:")
+print(df_full.isnull().sum())
+
+print("\nMissing values in small dataset:")
+print(df_small.isnull().sum())
+
+# Data visualization (example using matplotlib)
+# Example: histogram of a numerical column
+numerical_column = 'numerical_column_name'  # Replace with an existing numerical column name
+if numerical_column in df_full.columns:
+    plt.hist(df_full[numerical_column])
+    plt.title('Histogram of ' + numerical_column)
+    plt.show()
+else:
+    print(f"The column '{numerical_column}' does not exist in the DataFrame.")
+
+# Create a pair plot to visualize relationships between numerical attributes
+sns.pairplot(df_full)
+plt.show()
